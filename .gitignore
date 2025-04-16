@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Build and temp files
+dist/
+
+
+# MongoDB dump files
+dump/
