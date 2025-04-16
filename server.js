@@ -23,7 +23,7 @@ connectDB();
 // Security Middlewares
 app.use(helmet());
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://techinfuse.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -31,7 +31,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//app.use('/uploads', express.static(path.join(process.cwd(), "uploads")));
+
 
 
 // Limit repeated requests
@@ -41,14 +41,12 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.',
 });
 
+app.use(limiter);
+
 // Routes
 app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/blogs', blogRoutes);
-
-
-app.use(limiter);
-
 
 
 
